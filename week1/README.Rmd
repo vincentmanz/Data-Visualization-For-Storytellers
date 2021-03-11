@@ -12,7 +12,7 @@ library( hrbrthemes)
 library(viridis)
 ```
 
-
+# GDP per country
 
 ```{r cars}
 df <- read.csv("week1/gdp_pc_2018.csv")
@@ -57,8 +57,16 @@ df %>% ggplot(aes(x = gdp_pc, fill="country\ncount")) +
         legend.title=element_blank()) 
 ```
 
+# COVID-19 data for each US state 
+
+```{r read and convert to date}
+library(readxl)
+df <- read_excel("~/covid19.xlsx", col_types = c("text", "date", "numeric", "numeric", "numeric", "numeric", "text", "numeric", "numeric"))
+
+kable(glimpse(df))
+```
 
 ```{r}
-df <- read.csv("week1/mlb_salaries_2016.csv")
-glimpse(df)
+
 ```
+
