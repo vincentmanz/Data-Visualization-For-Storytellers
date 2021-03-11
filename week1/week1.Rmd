@@ -1,0 +1,64 @@
+---
+title: "week1"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library( hrbrthemes)
+library(viridis)
+```
+
+
+
+```{r cars}
+df <- read.csv("week1/gdp_pc_2018.csv")
+glimpse(df)```
+
+```
+
+
+```{r median, mean}
+# median, mean
+gdp_stats <- df %>% summarise(mean = mean(gdp_pc,na.rm = TRUE), 
+                              median = median(gdp_pc,na.rm = TRUE), 
+                              n = n())
+kable(gdp_stats)
+```
+
+```{r quantiles}
+
+q <-  as.data.frame(quantile(df$gdp_pc, na.rm = TRUE, c(0.2, 0.4, 0.6, 0.8)))
+colnames(q) <- c("quantiles values")
+kable(q)
+```
+
+```{r histogram, fig.width = 10}
+library(scales)
+df %>% ggplot(aes(x = gdp_pc, fill="country\ncount")) +
+  geom_histogram(
+    color = "#e9ecef",
+    binwidth = 5000,
+    na.rm = TRUE,
+    breaks = seq(0, 140000, by=5000)
+  ) +
+  scale_fill_viridis(discrete = TRUE) +
+  scale_color_viridis(discrete = TRUE) +
+  theme_ipsum() +
+  labs(title = "GDP per country") +
+  ylab("Number of nations") +
+  xlab("GDP") +
+  scale_x_continuous(labels = comma, breaks = seq(0, 140000, by=5000),limits = c(0,140000)) +
+  theme(axis.text.x =element_text(angle=90,size = 11),
+        axis.text.y =element_text(size = 11),
+        legend.title=element_blank()) 
+```
+
+
+```{r}
+df <- read.csv("week1/mlb_salaries_2016.csv")
+glimpse(df)
+```
