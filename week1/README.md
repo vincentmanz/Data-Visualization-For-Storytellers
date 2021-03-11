@@ -231,7 +231,11 @@ df_modified %>%
   e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
 ```
 
-!<script src="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/README_files/figure-gfm/cases.html"></script>
+![](README_files/figure-gfm/cases-1.png)<!-- -->
+
+![alt
+text](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.png
+"cases")
 
 ``` r
 json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
@@ -240,7 +244,13 @@ df_modified %>%
   e_charts(states) %>%
   e_map_register("USA", json) %>%
   e_map(death_for_100000, map = "USA") %>% 
-  e_visual_map(case_for_100000) %>%
+  e_visual_map(death_for_100000) %>%
       e_theme("vintage") %>%
   e_title("COVID-19 death per states", "Total death per 100,000 people (2021-03-10)")
 ```
+
+![](README_files/figure-gfm/death-1.png)<!-- -->
+
+![alt
+text](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/death.png
+"death")
