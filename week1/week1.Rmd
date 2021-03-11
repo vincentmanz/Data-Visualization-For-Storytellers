@@ -16,7 +16,7 @@ library(viridis)
 
 ```{r cars}
 df <- read.csv("week1/gdp_pc_2018.csv")
-glimpse(df)```
+glimpse(df)
 
 ```
 
