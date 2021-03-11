@@ -231,9 +231,42 @@ df_modified %>%
   e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](README_files/figure-gfm/cases-1.png)<!-- -->
 
-![](./death.html)
+\<\!DOCTYPE html\>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<title>
+
+Welcome
+
+</title>
+
+</head>
+
+<body>
+
+<h1>
+
+Django Site
+
+</h1>
+
+<hr />
+
+<p>
+
+Thanks for
+visiting.
+
+</p>
+
+</body>
+
+</html>
 
 ``` r
 json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
@@ -247,4 +280,4 @@ df_modified %>%
   e_title("COVID-19 death per states", "Total death per 100,000 people (2021-03-10)")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](README_files/figure-gfm/death-1.png)<!-- -->
