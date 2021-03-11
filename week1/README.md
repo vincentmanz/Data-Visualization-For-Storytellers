@@ -68,7 +68,7 @@ df %>% ggplot(aes(x = gdp_pc, fill="country\ncount")) +
         legend.title=element_blank()) 
 ```
 
-![](week1_files/figure-gfm/histogram-1.png)<!-- -->
+![](README_files/figure-gfm/histogram-1.png)<!-- -->
 
 ``` r
 df <- read.csv("week1/mlb_salaries_2016.csv")
