@@ -82,7 +82,7 @@ kable(df_modified)
 
 ## visualization
 
-```{r cases}
+```{r cases, eval=FALSE, echo=T}
 library(echarts4r.maps)
 library(echarts4r)
 
@@ -101,12 +101,12 @@ df_modified %>%
   e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
 ```
 
-<iframe
-  src="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/death.html"
-  style="width:100%; height:300px;"
-></iframe>
+<a id="raw-url" href="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.html">Interactive map here</a>
 
-```{r death}
+![alt text](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.png "cases")
+
+
+```{r death,eval=FALSE, echo=T}
 
 json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
 df_modified %>%
@@ -114,8 +114,12 @@ df_modified %>%
   e_charts(states) %>%
   e_map_register("USA", json) %>%
   e_map(death_for_100000, map = "USA") %>% 
-  e_visual_map(case_for_100000) %>%
+  e_visual_map(death_for_100000) %>%
       e_theme("vintage") %>%
   e_title("COVID-19 death per states", "Total death per 100,000 people (2021-03-10)")
 
 ```
+
+<a id="raw-url" href="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/death.html">Interactive map here</a>
+
+![alt text](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/death.png "death")
