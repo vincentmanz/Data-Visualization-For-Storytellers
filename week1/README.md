@@ -233,7 +233,7 @@ df_modified %>%
 
 ![](README_files/figure-gfm/cases-1.png)<!-- -->
 
-<iframe src="week1/death.html" style="width:100%; height:300px;">
+<iframe src="death.html" style="width:100%; height:300px;">
 
 </iframe>
 
