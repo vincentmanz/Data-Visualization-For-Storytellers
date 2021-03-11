@@ -59,14 +59,24 @@ df %>% ggplot(aes(x = gdp_pc, fill="country\ncount")) +
 
 # COVID-19 data for each US state 
 
+## Format the dates
+
 ```{r read and convert to date, warning=FALSE}
 library(readxl)
 df <- read_excel("~/covid19.xlsx", col_types = c("text", "date", "numeric", "numeric", "numeric", "numeric", "text", "numeric", "numeric"))
 
-kable(glimpse(df))
+kable(df)
 ```
 
+## total cases per 100,000 people, and total deaths per 100,000 people
+
 ```{r}
+df_modified <- df %>% 
+  mutate(
+  case_for_100000 = (df$cases/df$population)*100000,
+  death_for_100000 = (df$deaths/df$population)*100000,
+)
+kable(df_modified)
 
 ```
 
