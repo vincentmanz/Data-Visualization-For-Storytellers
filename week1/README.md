@@ -233,6 +233,8 @@ df_modified %>%
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
+![](./death.html)
+
 ``` r
 json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
 df_modified %>%

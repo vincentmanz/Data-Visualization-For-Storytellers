@@ -101,7 +101,7 @@ df_modified %>%
   e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
 ```
 
-
+![](./death.html)
 
 ```{r}
 
