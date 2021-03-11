@@ -59,7 +59,7 @@ df %>% ggplot(aes(x = gdp_pc, fill="country\ncount")) +
 
 # COVID-19 data for each US state 
 
-```{r read and convert to date}
+```{r read and convert to date, warning=FALSE}
 library(readxl)
 df <- read_excel("~/covid19.xlsx", col_types = c("text", "date", "numeric", "numeric", "numeric", "numeric", "text", "numeric", "numeric"))
 
