@@ -209,3 +209,40 @@ kable(df_modified)
 | West Virginia            | 2021-03-10 |  134158 |   2330 |        302 |           4 | WV            |          54 |    1792147 |         7485.8815 |         130.011656 |
 | Wisconsin                | 2021-03-10 |  623150 |   7151 |        706 |          13 | WI            |          55 |    5822434 |        10702.5687 |         122.818052 |
 | Wyoming                  | 2021-03-10 |   55014 |    691 |         42 |           0 | WY            |          56 |     578759 |         9505.5109 |         119.393392 |
+
+## visualization
+
+``` r
+library(echarts4r.maps)
+library(echarts4r)
+
+# remove Northern Mariana Islands
+df_modified<- df_modified[- grep("Mariana", df_modified$state),]
+
+
+json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
+df_modified %>%
+  dplyr::mutate(states = state) %>%
+  e_charts(states) %>%
+  e_map_register("USA", json) %>%
+  e_map(case_for_100000, map = "USA") %>% 
+  e_visual_map(case_for_100000) %>%
+      e_theme("halloween") %>%
+  e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
+json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
+df_modified %>%
+  dplyr::mutate(states = state) %>%
+  e_charts(states) %>%
+  e_map_register("USA", json) %>%
+  e_map(death_for_100000, map = "USA") %>% 
+  e_visual_map(case_for_100000) %>%
+      e_theme("vintage") %>%
+  e_title("COVID-19 death per states", "Total death per 100,000 people (2021-03-10)")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

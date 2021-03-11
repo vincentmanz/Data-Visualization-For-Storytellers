@@ -80,3 +80,39 @@ kable(df_modified)
 
 ```
 
+## visualization
+
+```{r}
+library(echarts4r.maps)
+library(echarts4r)
+
+# remove Northern Mariana Islands
+df_modified<- df_modified[- grep("Mariana", df_modified$state),]
+
+
+json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
+df_modified %>%
+  dplyr::mutate(states = state) %>%
+  e_charts(states) %>%
+  e_map_register("USA", json) %>%
+  e_map(case_for_100000, map = "USA") %>% 
+  e_visual_map(case_for_100000) %>%
+      e_theme("halloween") %>%
+  e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)")
+```
+
+
+
+```{r}
+
+json <- jsonlite::read_json("https://raw.githubusercontent.com/shawnbot/topogram/master/data/us-states.geojson")
+df_modified %>%
+  dplyr::mutate(states = state) %>%
+  e_charts(states) %>%
+  e_map_register("USA", json) %>%
+  e_map(death_for_100000, map = "USA") %>% 
+  e_visual_map(case_for_100000) %>%
+      e_theme("vintage") %>%
+  e_title("COVID-19 death per states", "Total death per 100,000 people (2021-03-10)")
+
+```
