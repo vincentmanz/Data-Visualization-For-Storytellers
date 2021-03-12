@@ -17,4 +17,8 @@ design.
 
 # Week1
 
+<center>
+
 ![COVID](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.png)
+
+</center>

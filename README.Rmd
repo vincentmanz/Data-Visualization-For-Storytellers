@@ -12,4 +12,8 @@ Tell stories with data. Craft clear and meaningful visualizations, interactive m
 
 # Week1 
 
+<center>
 ![COVID](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.png)
+</center>
+
+
