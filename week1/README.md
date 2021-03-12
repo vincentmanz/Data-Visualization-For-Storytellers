@@ -227,7 +227,7 @@ df_modified %>%
   e_map_register("USA", json) %>%
   e_map(case_for_100000, map = "USA") %>% 
   e_visual_map(case_for_100000) %>%
-      e_theme("chalk") %>%
+      e_theme("essos") %>%
   e_title("COVID-19 cases per states", "Total cases per 100,000 people (2021-03-10)") %>%
   e_tooltip(
     trigger = "item",
@@ -249,7 +249,7 @@ df_modified %>%
   e_map_register("USA", json) %>%
   e_map(death_for_100000, map = "USA") %>%
   e_visual_map(death_for_100000) %>%
-  e_theme("chalk") %>%
+  e_theme("essos") %>%
   e_title("COVID-19 death per states",
           "Total death per 100,000 people (2021-03-10)") %>%
   e_tooltip(trigger = "item",
