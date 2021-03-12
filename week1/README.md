@@ -234,6 +234,8 @@ df_modified %>%
     formatter = e_tooltip_choro_formatter()) 
 ```
 
+<br>
+
 <a id="raw-url" href="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/cases.html">Interactive
 map here</a>
 
@@ -255,6 +257,8 @@ df_modified %>%
   e_tooltip(trigger = "item",
             formatter = e_tooltip_choro_formatter()) 
 ```
+
+<br>
 
 <a id="raw-url" href="https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week1/figures/death.html">Interactive
 map here</a>
