@@ -1,0 +1,105 @@
+---
+title: "week1"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(knitr)
+library(ggplot2)
+library( hrbrthemes)
+library(viridis)
+library(readxl)
+library(echarts4r)
+
+```
+
+# COVID-19 data for each US state 
+
+## Format the dates
+
+```{r read and convert to date, warning=FALSE}
+
+df <- read_excel("../week1/covid19.xlsx", col_types = c("text", "date", "numeric", "numeric", "numeric", "numeric", "text", "numeric", "numeric"))
+
+#kable(df)
+```
+
+## total cases per 100,000 people, and total deaths per 100,000 people
+
+```{r calculation cases death}
+df_modified <- df %>% 
+  mutate(
+  case_for_100000 = (df$cases/df$population)*100000,
+  death_for_100000 = (df$deaths/df$population)*100000,
+)
+kable(df_modified)
+
+```
+
+## visualization
+
+```{r cases, eval=FALSE, echo=T}
+
+# remove Northern Mariana Islands
+df_modified<- df_modified[- grep("Mariana", df_modified$state),]
+df_modified <- df_modified %>% 
+  mutate(across(where(is.numeric), ~ round(., digits = 0)))
+```
+
+
+```{r}
+
+df_modified <- df_modified %>% 
+  mutate(across(where(is.numeric), ~ round(., digits = 0)))
+
+#scale the bubble sizes
+
+my_scale <- function(x){
+  scales::rescale(x, to = c(5, 90))
+}
+
+Plot with echarts4r
+df_modified %>%
+  e_charts(case_for_100000) %>%
+  e_scatter(death_for_100000,
+            population,
+            scale = my_scale,
+            bind = state) %>%
+  e_legend(FALSE)  %>%
+  e_mark_line(
+    lineStyle = list(color = "#E10056"),
+    data = list(type = "average"),
+    title = "US\ndeath rate\naverage",
+    silent = TRUE
+  ) %>%
+  e_mark_area(
+    "death_for_100000",
+    data = list(list(xAxis = 0, yAxis = 143),
+                list(xAxis = 15000, yAxis = 300)),
+    itemStyle = list(color = "#E10056",  opacity = 0.3),
+    silent = TRUE
+  ) %>%
+  e_mark_point("death_for_100000",silent = TRUE, 
+               data = list(x="200", 
+                           y="220", 
+                           itemStyle = list(color = "transparent"),
+                           value="Over the National average")) %>%
+  e_title("Where the COVID-19 is more deadly?",
+          "Death and case rate for 100,000 inhabitants.\nSource: www.buzzfeed.com\nLast accessed:17-03-2021\nAuthor: Vincent Manzanila") %>%
+  e_tooltip(formatter = htmlwidgets::JS("
+      function(params){return('<strong>' + params.name + 
+                '</strong><br />death rate: ' + params.value[1]+ 
+                '</strong><br />case rate: ' + params.value[0])}")) %>%
+  e_animation(duration = 5000) %>%
+  e_theme("chalk") %>% 
+  e_datazoom(x_index = 0, type = "slider") %>% 
+  e_datazoom(y_index = 0, type = "slider") %>%
+  e_toolbox_feature(feature = "saveAsImage") %>%
+  e_grid(top = 100)
+  
+
+
+```
+
