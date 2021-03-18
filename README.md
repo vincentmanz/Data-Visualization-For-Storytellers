@@ -15,6 +15,14 @@ interactive maps, charts and graphs using publicly available data. Learn
 the language of data visualization and turn data into
 design.
 
+# Week2
+
+<center>
+
+![COVID](https://github.com/vincentmanz/Data-Visualization-For-Storytellers/blob/master/week2/COVID-per-state.gif)
+
+</center>
+
 # Week1
 
 <center>
